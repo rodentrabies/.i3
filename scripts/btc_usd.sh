@@ -1,4 +1,4 @@
-#! /usr/bin/sh
+#! /bin/sh
 
 data=$(curl -sL https://coinbase.com/api/v1/prices/historical)
 if [[ ! -z $data ]]; then
