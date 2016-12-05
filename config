@@ -2,7 +2,7 @@
 # global setup
 #-------------------------------------------------------------------------------
 set $mod Mod4
-set $term gnome-terminal
+set $term xfce4-terminal
 set $conf ~/.i3
 set $execf exec --no-startup-id
 
@@ -27,6 +27,7 @@ client.urgent           #2f343a #900000 #ffffff #900000
 # startup
 #-------------------------------------------------------------------------------
 $execf compton --config $conf/components/compton.conf
+$execf nm-applet
 $execf $conf/scripts/screen.sh
 $execf feh --bg-scale $conf/graphics/wallpapers/wallpaper
 $execf setxkbmap us,ua -option grp:switch,grp:ctrl_shift_toggle,ctrl:nocaps
@@ -46,8 +47,8 @@ bar {
     position top
     status_command i3blocks -c $conf/components/top.conf
     font pango:FontAwesome 10.5
-    # font pango:monaco bold 10
     separator_symbol " "
+    tray_output none
     height 22
 
     colors {
@@ -67,9 +68,13 @@ bar {
     workspace_buttons no
     separator_symbol " "
     font pango:FontAwesome 10.5
-    # font pango:monaco bold 10
     status_command i3blocks -c $conf/components/bottom.conf
+    tray_output primary
     height 22
+
+    colors {
+        background #000000
+    }
 }
 #-------------------------------------------------------------------------------
 
@@ -115,8 +120,10 @@ mode "$mode_launcher" {
 #-------------------------------------------------------------------------------
 # start a terminal
 bindsym $mod+Shift+Return exec $term
-# start a program launcher
-bindsym $mod+Shift+p exec gmrun
+
+# start a program/window chooser
+bindsym $mod+Shift+p exec rofi -show run
+bindsym $mod+p exec rofi -show window
 
 # kill focused window
 bindsym $mod+Shift+c kill
@@ -141,7 +148,7 @@ bindsym $mod+Shift+l move right
 
 bindsym $mod+i split h
 bindsym $mod+u split v
-bindsym $mod+x fullscreen toggle
+bindsym $mod+f fullscreen toggle
 
 # change container layout
 bindsym $mod+s layout stacking
