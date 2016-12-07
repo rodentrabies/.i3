@@ -26,12 +26,14 @@ client.urgent           #2f343a #900000 #ffffff #900000
 #-------------------------------------------------------------------------------
 # startup
 #-------------------------------------------------------------------------------
-$execf compton --config $conf/components/compton.conf
-$execf nm-applet
-$execf $conf/scripts/screen.sh
-$execf feh --bg-scale $conf/graphics/wallpapers/wallpaper
-$execf setxkbmap us,ua -option grp:switch,grp:ctrl_shift_toggle,ctrl:nocaps
-$execf kbdd
+exec_always killall kbdd nm-applet compton
+exec_always $conf/scripts/screen.sh
+exec_always --no-startup-id compton --config $conf/components/compton.conf
+exec_always --no-startup-id nm-applet
+exec_always feh --bg-scale $conf/graphics/wallpapers/wallpaper
+exec_always setxkbmap us,ua -option grp:switch,grp:ctrl_shift_toggle,ctrl:nocaps
+exec_always --no-startup-id kbdd
+exec_always --no-startup-id twmnd
 #-------------------------------------------------------------------------------
 
 
