@@ -26,7 +26,7 @@ client.urgent           #2f343a #900000 #ffffff #900000
 #-------------------------------------------------------------------------------
 # startup
 #-------------------------------------------------------------------------------
-exec_always killall kbdd nm-applet compton
+exec_always killall kbdd nm-applet compton twmnd
 exec_always $conf/scripts/screen.sh
 exec_always --no-startup-id compton --config $conf/components/compton.conf
 exec_always --no-startup-id nm-applet
