@@ -13,7 +13,7 @@ new_window pixel 3
 
 # colors
 # class                 border  backgr. text    indic.
-client.focused          #007f00 #007f00 #000000 #007f00
+client.focused          #50C878 #50C878 #000000 #50C878
 client.focused_inactive #333333 #5f676a #ffffff #484e50
 client.unfocused        #333333 #222222 #888888 #292d2e
 client.urgent           #2f343a #900000 #ffffff #900000
@@ -56,10 +56,10 @@ bar {
     colors {
         background #000000
         statusline #ffffff
-        focused_workspace  #99ff99 #99ff99 #000000
-        active_workspace   #333333 #5f676a #ffffff
-        inactive_workspace #333333 #222222 #888888
-        urgent_workspace   #2f343a #900000 #ffffff
+        focused_workspace  #000000 #50C878 #000000
+        active_workspace   #000000 #5f676a #ffffff
+        inactive_workspace #000000 #283618 #ffffff
+        urgent_workspace   #000000 #900000 #ffffff
     }
 }
 
