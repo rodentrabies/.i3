@@ -63,6 +63,7 @@ bar {
     font pango:FontAwesome 10.5
     separator_symbol " "
     tray_output none
+    binding_mode_indicator no
 
     height 22
 
@@ -72,7 +73,7 @@ bar {
         focused_workspace  #000000 #50C878 #000000
         active_workspace   #000000 #5f676a #ffffff
         inactive_workspace #000000 #283618 #ffffff
-        urgent_workspace   #000000 #900000 #ffffff
+        urgent_workspace   #000000 #f3de8a #000000
     }
 }
 
@@ -90,6 +91,7 @@ bar {
 
     colors {
         background #000000
+        urgent_workspace   #000000 #f3de8a #000000
     }
 }
 #-------------------------------------------------------------------------------
@@ -228,6 +230,5 @@ bindsym XF86AudioLowerVolume $execf amixer -D pulse set 'Master' 5%-
 bindsym XF86AudioMute        $execf amixer -D pulse set 'Master' toggle
 
 # custom apps
-# bindsym $mod+m exec emacs
 bindsym $mod+Shift+apostrophe exec slock
 #-------------------------------------------------------------------------------
