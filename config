@@ -40,7 +40,7 @@ workspace 10 output eDP1
 #-------------------------------------------------------------------------------
 exec_always killall kbdd nm-applet compton twmnd
 exec_always $conf/scripts/screen.sh
-exec_always setxkbmap us,ua -option grp:switch,grp:ctrl_shift_toggle,ctrl:nocaps
+exec_always setxkbmap us,ua -option grp:switch,grp:shifts_toggle,ctrl:nocaps
 exec_always --no-startup-id compton --config $conf/components/compton.conf
 exec_always --no-startup-id nm-applet
 exec_always --no-startup-id kbdd
