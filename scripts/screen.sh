@@ -12,9 +12,9 @@ TOGGLE=$HOME/.i3/.alt_screen_on
 W_MAIN=$HOME/.i3/graphics/wallpapers/wallpaper_main
 W_ALT=$HOME/.i3/graphics/wallpapers/wallpaper_alt
 
-if (xrandr | grep "^DP1 connected" > /dev/null); then
+if (xrandr | grep "^HDMI1 connected" > /dev/null); then
     # one screen by default
-    xrandr --output eDP1 --off --output DP1 --auto --primary
+    xrandr --output eDP1 --off --output HDMI1 --auto --primary
     # non-empty parameter triggers toggle mode
     if [ -z "$1" ]; then
         # remove toggle flag
@@ -23,7 +23,7 @@ if (xrandr | grep "^DP1 connected" > /dev/null); then
     else
         if [ ! -e $TOGGLE ]; then
             touch $TOGGLE
-            xrandr --output eDP1 --auto --right-of DP1
+            xrandr --output eDP1 --auto --right-of HDMI1
         else
             rm $TOGGLE
             xrandr --output eDP1 --off
