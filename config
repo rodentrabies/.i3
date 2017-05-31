@@ -142,9 +142,9 @@ mode "$mode_launcher" {
 bindsym $mod+Shift+Return exec $term
 
 # start a program/window chooser
-bindsym $mod+Shift+p exec rofi -show run
-bindsym $mod+Shift+d exec rofi -show drun
-bindsym $mod+p exec rofi -show window
+bindsym $mod+p exec rofi -show run
+bindsym $mod+Shift+p exec rofi -show drun
+bindsym $mod+Control+p exec rofi -show window
 
 # kill focused window
 bindsym $mod+Shift+c kill
