@@ -240,9 +240,15 @@ bindsym $mod+q restart
 bindsym $mod+m exec $conf/scripts/screen.sh toggle
 
 # media keys
+# volume
 bindsym XF86AudioRaiseVolume $execf amixer -D pulse set 'Master' 5%+
 bindsym XF86AudioLowerVolume $execf amixer -D pulse set 'Master' 5%-
 bindsym XF86AudioMute        $execf amixer -D pulse set 'Master' toggle
+# brightness
+bindsym $mod+Shift+comma  $execf xbacklight -dec 10
+bindsym $mod+Shift+period $execf xbacklight -inc 10
+
+
 
 # custom apps
 bindsym $mod+Shift+apostrophe exec slock
