@@ -131,12 +131,14 @@ mode "$mode_launcher" {
 }
 
 # logout
-set $mode_logout Exit: [l]ogout, [s]hutdown, [r]eboot
+set $mode_logout Exit: [l]ogout, [p]oweroff, [r]eboot, [s]uspend, [h]ibernate
 bindsym $mod+Shift+q mode "$mode_logout"
 mode "$mode_logout" {
      bindsym l exec i3-msg exit
-     bindsym s exec --no-startup-id systemctl poweroff
+     bindsym p exec --no-startup-id systemctl poweroff
      bindsym r exec --no-startup-id systemctl reboot
+     bindsym s exec --no-startup-id systemctl suspend
+     bindsym h exec --no-startup-id systemctl hibernate
 
      bindsym Escape mode "default"
      bindsym Return mode "default"
