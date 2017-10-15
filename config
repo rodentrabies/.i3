@@ -119,12 +119,13 @@ mode "resize" {
 
 # launcher
 set $mode_launcher Launch: [e]macs, [f]irefox, [t]hunar, to[r]-browser
+set $tor_browser ~/00_util/tor-browser_en-US/Browser/start-tor-browser
 bindsym $mod+o mode "$mode_launcher"
 mode "$mode_launcher" {
-    bindsym f exec firefox
-    bindsym e exec emacs
-    bindsym t exec thunar
-    bindsym r exec ~/00_util/tor-browser_en-US/Browser/start-tor-browser
+    bindsym f exec firefox; mode "default"
+    bindsym e exec emacs; mode "default"
+    bindsym t exec thunar; mode "default"
+    bindsym r exec $tor_browser; mode "default"
 
     bindsym Escape mode "default"
     bindsym Return mode "default"
