@@ -1,6 +1,12 @@
 #-------------------------------------------------------------------------------
 # global setup
 #-------------------------------------------------------------------------------
+
+# monitor setup
+set $mainout eDP1
+set $altout  eDP1
+
+# handy aliases
 set $mod Mod4
 set $term xfce4-terminal
 set $conf ~/.i3
@@ -19,16 +25,16 @@ client.unfocused        #333333 #222222 #888888 #292d2e
 client.urgent           #2f343a #900000 #ffffff #900000
 
 # workspace setup
-workspace  1 output HDMI1
-workspace  2 output HDMI1
-workspace  3 output HDMI1
-workspace  4 output HDMI1
-workspace  5 output HDMI1
-workspace  6 output HDMI1
-workspace  7 output HDMI1
-workspace  8 output HDMI1
-workspace  9 output HDMI1
-workspace 10 output eDP1
+workspace  1 output $mainout
+workspace  2 output $mainout
+workspace  3 output $mainout
+workspace  4 output $mainout
+workspace  5 output $mainout
+workspace  6 output $mainout
+workspace  7 output $mainout
+workspace  8 output $mainout
+workspace  9 output $mainout
+workspace 10 output $altout
 #-------------------------------------------------------------------------------
 
 
@@ -59,7 +65,7 @@ exec --no-startup-id i3-msg workspace 1
 bar {
     id topbar
     position top
-    output HDMI1
+    output $mainout
     status_command i3blocks -c $conf/components/top.conf
     font pango:FontAwesome 10.5
     separator_symbol " "
@@ -82,7 +88,7 @@ bar {
 bar {
     id bottombar
     position bottom
-    output HDMI1
+    output $mainout
     workspace_buttons no
     separator_symbol " "
     font pango:FontAwesome 10.5
