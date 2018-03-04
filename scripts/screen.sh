@@ -1,37 +1,34 @@
 #!/bin/bash
 #-------------------------------------------------------------------------------
-# Screen manager
+# Screen control tool
 #
-# If external monitor is connected, set it as primary and turn internal one off.
-# If flag was passed (i.e. non empty string), toggle internal monitor on or off
-# depending on the existence of the flag file in config directory, otherwise
-# touch and remove flag file in case it was left there after previous session.
-# Finally, if external monitor is not connected, set internal as primary one.
+# $1 - main output name as reported by xrandr
+# $2 - alternative output name as reported by xrandr
+# $3 - toggle flag for turning alternative monitor on/off
 #-------------------------------------------------------------------------------
 TOGGLE=$HOME/.i3/.alt_screen_on
 W_MAIN=$HOME/.i3/graphics/wallpapers/wallpaper_main
 W_ALT=$HOME/.i3/graphics/wallpapers/wallpaper_alt
 
-if (xrandr | grep "^HDMI1 connected" > /dev/null); then
-    # one screen by default
-    xrandr --output eDP1 --off --output HDMI1 --auto --primary
+if [ "$1" == "$2" ]; then
+    xrandr --output $1 --auto --primary
+else
+    xrandr --output $1 --auto --primary --output $2 --auto --right-of $1
+    xrandr --output $1 --auto --primary --output $2 --off
     # non-empty parameter triggers toggle mode
-    if [ -z "$1" ]; then
+    if [ -z "$3" ]; then
         # remove toggle flag
         touch $TOGGLE
         rm $TOGGLE
     else
         if [ ! -e $TOGGLE ]; then
             touch $TOGGLE
-            xrandr --output eDP1 --auto --right-of HDMI1
+            xrandr --output $2 --auto --right-of HDMI1
         else
             rm $TOGGLE
-            xrandr --output eDP1 --off
+            xrandr --output $2 --off
         fi
     fi
-else
-    xrandr --output eDP1 --auto --primary
 fi
 
 feh --bg-scale $W_MAIN --bg-scale $W_ALT
-#-------------------------------------------------------------------------------

@@ -3,8 +3,8 @@
 #-------------------------------------------------------------------------------
 
 # monitor setup
-set $mainout eDP1
-set $altout  eDP1
+set $out_main eDP1
+set $out_alt  eDP1
 
 # handy aliases
 set $mod Mod4
@@ -25,16 +25,16 @@ client.unfocused        #333333 #222222 #888888 #292d2e
 client.urgent           #2f343a #900000 #ffffff #900000
 
 # workspace setup
-workspace  1 output $mainout
-workspace  2 output $mainout
-workspace  3 output $mainout
-workspace  4 output $mainout
-workspace  5 output $mainout
-workspace  6 output $mainout
-workspace  7 output $mainout
-workspace  8 output $mainout
-workspace  9 output $mainout
-workspace 10 output $altout
+workspace  1 output $out_main
+workspace  2 output $out_main
+workspace  3 output $out_main
+workspace  4 output $out_main
+workspace  5 output $out_main
+workspace  6 output $out_main
+workspace  7 output $out_main
+workspace  8 output $out_main
+workspace  9 output $out_main
+workspace 10 output $out_alt
 #-------------------------------------------------------------------------------
 
 
@@ -45,7 +45,7 @@ workspace 10 output $altout
 # startup
 #-------------------------------------------------------------------------------
 exec_always killall kbdd nm-applet compton twmnd
-exec_always $conf/scripts/screen.sh
+exec_always $conf/scripts/screen.sh $out_main $out_alt
 exec_always setxkbmap us,ua -option grp:switch,grp:shifts_toggle,ctrl:nocaps
 exec_always --no-startup-id compton --config $conf/components/compton.conf
 exec_always --no-startup-id nm-applet
@@ -65,7 +65,7 @@ exec --no-startup-id i3-msg workspace 1
 bar {
     id topbar
     position top
-    output $mainout
+    output $out_main
     status_command i3blocks -c $conf/components/top.conf
     font pango:FontAwesome 10.5
     separator_symbol " "
@@ -88,7 +88,7 @@ bar {
 bar {
     id bottombar
     position bottom
-    output $mainout
+    output $out_main
     workspace_buttons no
     separator_symbol " "
     font pango:FontAwesome 10.5
@@ -246,7 +246,7 @@ bindsym $mod+q restart
 # custom keybindings
 #-------------------------------------------------------------------------------
 # util
-bindsym $mod+m exec $conf/scripts/screen.sh toggle
+bindsym $mod+m exec $conf/scripts/screen.sh $out_main $out_alt toggle
 
 # media keys
 # volume
