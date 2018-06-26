@@ -9,8 +9,9 @@ set $out_alt  eDP1
 # handy aliases
 set $mod Mod4
 set $term xfce4-terminal
-set $conf ~/.i3
 set $execf exec --no-startup-id
+set $i3 ~/.i3
+
 
 floating_modifier $mod
 font pango:monaco bold 8
@@ -48,13 +49,13 @@ for_window [class="Display"] floating enable
 # startup
 #-------------------------------------------------------------------------------
 exec_always killall kbdd nm-applet compton twmnd
-exec_always $conf/scripts/screen.sh $out_main $out_alt
+exec_always $i3/scripts/screen.sh $out_main $out_alt
 exec_always setxkbmap us,ua -option grp:switch,grp:shifts_toggle,ctrl:nocaps
-exec_always --no-startup-id compton --config $conf/components/compton.conf
+exec_always --no-startup-id compton --config $i3/components/compton/compton.conf
 exec_always --no-startup-id nm-applet
 exec_always --no-startup-id kbdd
 exec_always --no-startup-id twmnd
-exec --no-startup-id i3-msg workspace 1
+exec        --no-startup-id i3-msg workspace 1
 #-------------------------------------------------------------------------------
 
 
@@ -69,7 +70,7 @@ bar {
     id topbar
     position top
     output $out_main
-    status_command i3blocks -c $conf/components/top.conf
+    status_command i3blocks -c $i3/components/i3blocks/top.conf
     font pango:FontAwesome 10.5
     separator_symbol " "
     tray_output none
@@ -95,7 +96,7 @@ bar {
     workspace_buttons no
     separator_symbol " "
     font pango:FontAwesome 10.5
-    status_command i3blocks -c $conf/components/bottom.conf
+    status_command i3blocks -c $i3/components/i3blocks/bot.conf
     tray_output primary
     height 22
 
@@ -249,7 +250,7 @@ bindsym $mod+q restart
 # custom keybindings
 #-------------------------------------------------------------------------------
 # util
-bindsym $mod+m exec $conf/scripts/screen.sh $out_main $out_alt toggle
+bindsym $mod+m exec $i3/scripts/screen.sh $out_main $out_alt toggle
 
 # media keys
 # volume
