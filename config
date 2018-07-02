@@ -167,9 +167,9 @@ mode "$mode_logout" {
 bindsym $mod+Shift+Return exec $term
 
 # start a program/window chooser
-bindsym $mod+p exec rofi -show run
-bindsym $mod+Shift+p exec rofi -show drun
-bindsym $mod+Control+p exec rofi -show window
+bindsym $mod+p         exec rofi -show run    -config $i3/components/rofi/rofi.conf
+bindsym $mod+Shift+p   exec rofi -show drun   -config $i3/components/rofi/rofi.conf
+bindsym $mod+Control+p exec rofi -show window -config $i3/components/rofi/rofi.conf
 
 # kill focused window
 bindsym $mod+Shift+c kill
@@ -186,12 +186,7 @@ bindsym $mod+Shift+k move up
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+l move right
 
-# resize
-# bindsym n resize shrink width 10 px or 10 ppt
-# bindsym  resize grow width 10 px or 10 ppt
-# bindsym l resize shrink height 10 px or 10 ppt
-# bindsym semicolon resize grow height 10 px or 10 ppt
-
+# split windows
 bindsym $mod+i split h
 bindsym $mod+u split v
 bindsym $mod+f fullscreen toggle
