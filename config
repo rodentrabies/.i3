@@ -12,18 +12,45 @@ set $term xfce4-terminal
 set $execf exec --no-startup-id
 set $i3 ~/.i3
 
-
 floating_modifier $mod
 font pango:monaco bold 8
 gaps inner 7
 new_window pixel 3
+smart_gaps on
+smart_borders on
 
 # colors
-# class                 border  backgr. text    indic.
-client.focused          #50C878 #50C878 #000000 #50C878
-client.focused_inactive #333333 #5f676a #ffffff #484e50
-client.unfocused        #333333 #222222 #888888 #292d2e
-client.urgent           #2f343a #900000 #ffffff #900000
+# colorscheme consists of the following colors
+#
+#    hex        rgb              description
+#    -------------------------------------------------
+#    #467fa1    (70, 127, 161)   rain blue
+#    #54295c    (84, 41,  92)    rain purple
+#    #061f2b    (6,  31,  43)    dark rain blue
+#    #1e0f1d    (30, 15,  29)    dark rain purple
+#    #5e0b0b    (94, 11,  11)    blood red
+#
+# focused
+set $cf_border     #54295c
+set $cf_background #54295c
+set $cf_text       #000000
+# active
+set $ca_border     #1e0f1d
+set $ca_background #1e0f1d
+set $ca_text       #ffffff
+# inactive
+set $ci_border     #1e0f1d
+set $ci_background #1e0f1d
+set $ci_text       #ffffff
+# urgent
+set $cu_border     #5e0b0b
+set $cu_background #5e0b0b
+set $cu_text       #ffffff
+# class                 border     background     text     indicator
+client.focused          $cf_border $cf_background $cf_text $cf_border
+client.focused_inactive $ca_border $ca_background $ca_text $ca_border
+client.unfocused        $ci_border $ci_background $ci_text $ci_border
+client.urgent           $cu_border $cu_background $cu_text $cu_border
 
 # workspace setup
 workspace  1 output $out_main
@@ -37,7 +64,7 @@ workspace  8 output $out_main
 workspace  9 output $out_main
 workspace 10 output $out_alt
 
-# force floating for certain window classes
+# floating windows configuration
 for_window [class="Display"] floating enable
 #-------------------------------------------------------------------------------
 
@@ -79,12 +106,12 @@ bar {
     height 22
 
     colors {
-        background #000000
-        statusline #ffffff
-        focused_workspace  #000000 #50C878 #000000
-        active_workspace   #000000 #5f676a #ffffff
-        inactive_workspace #000000 #283618 #ffffff
-        urgent_workspace   #000000 #f3de8a #000000
+        background         #000000
+        statusline         #ffffff
+        focused_workspace  #000000 $cf_background $cf_text
+        active_workspace   #000000 $ca_background $ca_text
+        inactive_workspace #000000 $ci_background $ci_text
+        urgent_workspace   #000000 $cu_background $cu_text
     }
 }
 
@@ -101,8 +128,8 @@ bar {
     height 22
 
     colors {
-        background #000000
-        urgent_workspace   #000000 #f3de8a #000000
+        background       #000000
+        urgent_workspace #000000 $cu_background $cu_text
     }
 }
 #-------------------------------------------------------------------------------
