@@ -75,13 +75,14 @@ for_window [class="Display"] floating enable
 #-------------------------------------------------------------------------------
 # startup
 #-------------------------------------------------------------------------------
-exec_always killall kbdd nm-applet compton twmnd
+exec_always killall kbdd nm-applet compton twmnd conky
 exec_always $i3/scripts/screen.sh $out_main $out_alt
 exec_always setxkbmap us,ua -option grp:switch,grp:shifts_toggle,ctrl:nocaps
 exec_always --no-startup-id compton --config $i3/components/compton/compton.conf
 exec_always --no-startup-id nm-applet
 exec_always --no-startup-id kbdd
 exec_always --no-startup-id twmnd
+exec_always --no-startup-id conky -c $i3/components/conky/conky.conf
 exec        --no-startup-id i3-msg workspace 1
 #-------------------------------------------------------------------------------
 
